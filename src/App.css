@@ -10,22 +10,3 @@
 .grid div img {
     width: 80%;
 }
-
-.card .back{
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    border: 2px solid white;
-}
-
-.card .front{
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    border: 2px solid black;
-}
-
