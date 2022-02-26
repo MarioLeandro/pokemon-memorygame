@@ -15,6 +15,10 @@ cursor: pointer;
     transition: all ease-in 0.2s;
 }
 
+.card .front.matched{
+    background-color:  #70ff6b;
+}
+
 .flipped .front {
     transform: rotateY(0deg);
     transition-delay: 0.2s;

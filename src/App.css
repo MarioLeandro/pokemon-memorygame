@@ -20,6 +20,19 @@
     cursor: pointer;
 }
 
+p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white; 
+    font-family: monospace;
+    font-size: 1.5rem;
+    background-color: black;
+    border: 2px solid white;
+    width: 10rem;
+    height: 4rem;
+}
+
 .grid {
     height: 600px;
     width: 600px;
