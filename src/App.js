@@ -69,7 +69,7 @@ function App() {
   console.log(cards)
 
   return (
-    <>
+    <div className='container'>
       <button onClick={shuffleCards}>New Game</button>
       <div className="grid">
         {cards.map(card => (
@@ -80,7 +80,7 @@ function App() {
           />
         ))}
       </div>
-    </>
+    </div>
   );
 }
 

@@ -1,14 +1,6 @@
 .card {
 position: relative;
-}
-
-.card .back{
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    border: 2px solid white;
+cursor: pointer;
 }
 
 .card .front{
@@ -20,8 +12,26 @@ position: relative;
     border: 2px solid black;
     position: absolute;
     transform: rotateY(90deg);
+    transition: all ease-in 0.2s;
 }
 
 .flipped .front {
-    transform: rotate(0deg);
+    transform: rotateY(0deg);
+    transition-delay: 0.2s;
+}
+
+.card .back{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: 2px solid white;
+    transition: all ease-in 0.2s;
+    transition-delay: 0.2s;
+}
+
+.flipped .back {
+    transform: rotateY(90deg);
+    transition-delay: 0s;
 }
