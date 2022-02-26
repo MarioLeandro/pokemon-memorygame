@@ -1,3 +1,6 @@
+.card {
+position: relative;
+}
 
 .card .back{
     background-color: white;
@@ -15,4 +18,10 @@
     align-items: center;
     border-radius: 5px;
     border: 2px solid black;
+    position: absolute;
+    transform: rotateY(90deg);
+}
+
+.flipped .front {
+    transform: rotate(0deg);
 }

@@ -3,12 +3,12 @@ import './App.css';
 import Card from './components/Card/Card.js'
 
 const initialCards = [
-  { "src": "/images/bulbasaur.png" },
-  { "src": "/images/butterfree.png" },
-  { "src": "/images/charmander.png" },
-  { "src": "/images/pidgeotto.png" },
-  { "src": "/images/pikachu.png" },
-  { "src": "/images/squirtle.png" },
+  { "src": "/images/bulbasaur.png", matched: false },
+  { "src": "/images/butterfree.png", matched: false },
+  { "src": "/images/charmander.png", matched: false },
+  { "src": "/images/pidgeotto.png", matched: false },
+  { "src": "/images/pikachu.png", matched: false },
+  { "src": "/images/squirtle.png", matched: false },
 ];
 
 function App() {
@@ -16,6 +16,10 @@ function App() {
   const [turn, setTurn] = useState(0);
   const [choiceOne, setChoiceOne] = useState(null)
   const [choiceTwo, setChoiceTwo] = useState(null)
+
+  useEffect(() => {
+    shuffleCards();
+  }, []);
 
   function shuffleCards() {
     //setCards(null)
@@ -29,31 +33,40 @@ function App() {
 
 
   function handleChoice(card) {
-    choiceOne ? ( 
+    choiceOne ? (
       choiceOne.id !== card.id &&
-      setChoiceTwo(card)) 
-    : setChoiceOne(card)
+      setChoiceTwo(card))
+      : setChoiceOne(card)
   }
 
-  function resetTurn () {
+  function resetTurn() {
     setChoiceOne(null)
     setChoiceTwo(null)
     setTurn(prevTurn => prevTurn + 1)
   }
 
   useEffect(() => {
-    if(choiceOne && choiceTwo) {
-      if(choiceOne.src === choiceTwo.src) {
-        console.log("MATCH");
+    if (choiceOne && choiceTwo) {
+      if (choiceOne.src === choiceTwo.src) {
+        setCards(prevCards => {
+          return prevCards.map(card => {
+            if (card.src === choiceOne.src) {
+              return { ...card, matched: true }
+            } else {
+              return card
+            }
+          })
+        })
         resetTurn();
       } else {
-        console.log("NOT MATCH");
-        resetTurn();
+        setTimeout(() => {
+          resetTurn();
+        }, 800);
       }
     }
   }, [choiceOne, choiceTwo]);
 
-
+  console.log(cards)
 
   return (
     <>
@@ -63,6 +76,7 @@ function App() {
           <Card
             card={card}
             handleChoice={handleChoice}
+            flipped={card === choiceOne || card === choiceTwo || card.matched}
           />
         ))}
       </div>
